@@ -11,6 +11,9 @@ export class Service {
         .setProject(config.appwriteProjectID);
         this.databases = new Databases(this.client);
         this.bucket = new Storage(this.client)
+        console.log("Endpoint ", this.client
+            .setEndpoint(config.appwriteURL));
+        
     }
 
     async createPost({title, slug, content, featuredImage, status, userID}) {
@@ -121,7 +124,9 @@ export class Service {
     getFilePreview(fileID) {
         try {
             // console.log('Fetching preview for fileID:', fileID); // Add this line
+            // console.log("FileId", this.bucket.getFilePreview(config.appwriteBucketID, fileID));
             return this.bucket.getFilePreview(config.appwriteBucketID, fileID);
+            
         } catch (error) {
             // console.error('Error getting file preview:', error);
             throw error;

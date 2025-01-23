@@ -8,9 +8,9 @@ function Home() {
 
     // In the Home component
     useEffect(() => {
-        appwriteService.getPosts([Query.equal("status", "active"), Query.limit(1)])
+        appwriteService.getPosts([Query.equal("status", "active"), Query.limit(2)])
             .then((posts) => {
-                console.log("Fetched posts for Home: ", posts);
+                // console.log("Fetched posts for Home: ", posts);
                 if (posts && posts.documents) {
                     setPosts(posts.documents);
                 }
