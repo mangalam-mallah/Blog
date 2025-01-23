@@ -122,16 +122,11 @@ export class Service {
     }
 
     getFilePreview(fileID) {
-        try {
-            // console.log('Fetching preview for fileID:', fileID); // Add this line
-            console.log("FileId", this.bucket.getFilePreview(config.appwriteBucketID, fileID));
-            return this.bucket.getFilePreview(config.appwriteBucketID, fileID);
-            
-        } catch (error) {
-            // console.error('Error getting file preview:', error);
-            throw error;
-        }
+        const previewURL = this.bucket.getFilePreview(config.appwriteBucketID, fileID);
+        console.log("Generated Preview URL:", previewURL);
+        return previewURL; // Ensure no manual addition of `project`
     }
+    
     
     
 }
