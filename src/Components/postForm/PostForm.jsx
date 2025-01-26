@@ -20,30 +20,30 @@ export default function PostForm({ post }) {
 
     const submit = async (data) => {
         const content = String(data.content).slice(0, 300);
-        if (post) {
+        if (post?.$id) {  // Check if post exists before proceeding
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
-
+    
             if (file) {
                 appwriteService.deleteFile(post.featuredImage);
             }
-
+    
             const dbPost = await appwriteService.updatePost(post.$id, {
                 ...data,
                 content,
                 featuredImage: file ? file.$id : undefined,
             });
-
+    
             if (dbPost) {
                 navigate(`/post/${dbPost.$id}`);
             }
         } else {
             const file = await appwriteService.uploadFile(data.image[0]);
-
+    
             if (file) {
                 const fileId = file.$id;
                 data.featuredImage = fileId;
                 const dbPost = await appwriteService.createPost({ ...data, userID: userData.$id });
-
+    
                 if (dbPost) {
                     navigate(`/post/${dbPost.$id}`);
                 }
@@ -74,7 +74,8 @@ export default function PostForm({ post }) {
 
     return (
         <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-            <div className="w-2/3 px-2">
+            {/* Mobile: Stack form fields, Desktop: 2/3 and 1/3 Layout */}
+            <div className="w-full sm:w-2/3 px-2">
                 <Input
                     label="Title :"
                     placeholder="Title"
@@ -92,7 +93,9 @@ export default function PostForm({ post }) {
                 />
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
             </div>
-            <div className="w-1/3 px-2">
+
+            {/* Image and Status Inputs, Stack on mobile */}
+            <div className="w-full sm:w-1/3 px-2">
                 <Input
                     label="Featured Image :"
                     type="file"

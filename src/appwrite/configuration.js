@@ -11,8 +11,8 @@ export class Service {
         .setProject(config.appwriteProjectID);
         this.databases = new Databases(this.client);
         this.bucket = new Storage(this.client)
-        console.log("Endpoint ", this.client
-            .setEndpoint(config.appwriteURL));
+        // console.log("Endpoint ", this.client
+        //     .setEndpoint(config.appwriteURL));
         
     }
 
@@ -86,7 +86,7 @@ export class Service {
                 config.appwriteCollectionID,
                 queries
             );
-            console.log('Fetched posts:', response.documents);
+            // console.log('Fetched posts:', response.documents);
             return response;
         } catch (error) {
             console.log("Error fetching posts:", error);
@@ -123,7 +123,7 @@ export class Service {
 
     getFilePreview(fileID) {
         const previewURL = this.bucket.getFilePreview(config.appwriteBucketID, fileID);
-        console.log("Generated Preview URL:", previewURL);
+        // console.log("Generated Preview URL:", previewURL);
         return previewURL; // Ensure no manual addition of `project`
     }
     
