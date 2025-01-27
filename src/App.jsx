@@ -27,19 +27,20 @@ function App() {
   }, [dispatch]);
 
   return !loading ? (
-    <div className="relative min-h-screen bg-gradient-to-r from-blue-400 to-blue-500">
+    <div className="relative flex flex-col min-h-screen bg-gradient-to-r from-blue-400 to-blue-500">
       {/* Fixed Header */}
       <Header />
-
-      {/* Scrollable Content Area */}
-      <main className="pt-24 pb-16 sm:pt-32 sm:pb-20 overflow-y-auto max-h-[calc(100vh-120px)]">
+  
+      {/* Flexible Content Area */}
+      <main className="flex-grow pt-24 pb-16 sm:pt-32 sm:pb-20 overflow-y-auto">
         <Outlet />
       </main>
-
+  
       {/* Fixed Footer */}
       <Footer />
     </div>
-  ) : (
+  )
+   : (
     <div className="flex items-center justify-center h-screen md:min-h-screen bg-gradient-to-r from-blue-400 to-blue-500">
       <p>Loading...</p>
     </div>

@@ -8,27 +8,23 @@ function Footer() {
       <div className="relative z-10 mx-auto max-w-7xl px-4">
         <div className="-m-6 flex flex-wrap">
           {/* Logo and Copyright (Visible on all devices) */}
-          <div className="w-full p-6 md:w-1/2 lg:w-5/12">
+          <div className="w-full p-6 md:w-1/2 lg:w-4/12">
             <div className="flex h-full flex-col justify-between">
               <div className="mb-4 inline-flex items-center">
                 <Logo width="100px" />
               </div>
               <div>
-                <p className="text-sm">
-                  &copy; Copyright 2025. All Rights Reserved by DevUI.
-                </p>
+                <p className="text-sm">&copy; Copyright 2025. All Rights Reserved by DevUI.</p>
               </div>
             </div>
           </div>
 
-          {/* Remaining Content (Hidden on mobile, visible on desktop) */}
-          <div className="hidden lg:flex lg:flex-wrap lg:w-7/12">
+          {/* Remaining Content (Grid for desktop, hidden on mobile) */}
+          <div className="hidden lg:grid lg:grid-cols-3 lg:gap-6 lg:w-8/12">
             {/* Company Links */}
-            <div className="w-full lg:w-2/12 p-6">
+            <div className="p-6">
               <div className="h-full">
-                <h3 className="tracking-widest mb-6 text-xs font-semibold uppercase">
-                  Company
-                </h3>
+                <h3 className="tracking-widest mb-6 text-xs font-semibold uppercase">Company</h3>
                 <ul>
                   <li className="mb-4">
                     <Link
@@ -67,11 +63,9 @@ function Footer() {
             </div>
 
             {/* Support Links */}
-            <div className="w-full lg:w-2/12 p-6">
+            <div className="p-6">
               <div className="h-full">
-                <h3 className="tracking-widest mb-6 text-xs font-semibold uppercase">
-                  Support
-                </h3>
+                <h3 className="tracking-widest mb-6 text-xs font-semibold uppercase">Support</h3>
                 <ul>
                   <li className="mb-4">
                     <Link
@@ -110,11 +104,9 @@ function Footer() {
             </div>
 
             {/* Legal Links */}
-            <div className="w-full lg:w-3/12 p-6">
+            <div className="p-6">
               <div className="h-full">
-                <h3 className="tracking-widest mb-6 text-xs font-semibold uppercase">
-                  Legals
-                </h3>
+                <h3 className="tracking-widest mb-6 text-xs font-semibold uppercase">Legals</h3>
                 <ul>
                   <li className="mb-4">
                     <Link
